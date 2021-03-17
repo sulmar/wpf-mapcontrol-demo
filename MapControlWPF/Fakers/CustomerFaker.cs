@@ -11,7 +11,7 @@ namespace MapControlWPF.Fakers
 {
     public class CustomerFaker : Faker<Customer>
     {
-        public CustomerFaker(Faker<Location> faker)
+        public CustomerFaker(Faker<Coordinate> faker)
         {
             RuleFor(p => p.Name, f => f.Person.FullName);
             RuleFor(p => p.Location, f => faker.Generate());
@@ -23,6 +23,15 @@ namespace MapControlWPF.Fakers
         public LocationFaker()
         {
             RuleFor(p => p.Latitude, f =>  f.Address.Latitude(50, 52));
+            RuleFor(p => p.Longitude, f => f.Address.Longitude(20, 22));
+        }
+    }
+
+    public class CoordinateFaker : Faker<Coordinate>
+    {
+        public CoordinateFaker()
+        {
+            RuleFor(p => p.Latitude, f => f.Address.Latitude(50, 52));
             RuleFor(p => p.Longitude, f => f.Address.Longitude(20, 22));
         }
     }

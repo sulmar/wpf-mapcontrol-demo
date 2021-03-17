@@ -15,7 +15,7 @@ namespace MapControlWPF.FakeServices
         private readonly IEnumerable<Customer> customers;
 
         public FakeCustomerService()
-            : this(new CustomerFaker(new LocationFaker()))
+            : this(new CustomerFaker(new CoordinateFaker()))
         {
 
         }

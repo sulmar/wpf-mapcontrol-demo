@@ -5,13 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MapControlWPF.Views"
         xmlns:m="clr-namespace:MapControlWPF.Models"
-        xmlns:vm="clr-namespace:MapControlWPF.ViewModels" xmlns:Maps="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
+        xmlns:vm="clr-namespace:MapControlWPF.ViewModels" xmlns:Maps="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF" xmlns:c="clr-namespace:MapControlWPF.Converters"
         mc:Ignorable="d"
         Title="CustomersMapView" Height="450" Width="800">
 
     <Window.DataContext>
         <vm:CustomersMapView />
     </Window.DataContext>
+
+    <Window.Resources>
+        <c:LocationConverter x:Key="LocationConverter" />
+    </Window.Resources>
+    
     <Grid>
 
         <DockPanel>
@@ -36,7 +41,7 @@
                 <Maps:MapItemsControl ItemsSource="{Binding Customers}">
                     <Maps:MapItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Maps:Pushpin Location="{Binding Location}" 
+                            <Maps:Pushpin Location="{Binding Location, Converter={StaticResource LocationConverter}}" 
                                           Content="{Binding Name}"
                                 Background="Black">
 

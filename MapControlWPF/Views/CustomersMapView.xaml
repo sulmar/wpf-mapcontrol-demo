@@ -35,7 +35,7 @@
             </ListBox>
 
             <Maps:Map x:Name="Map" CredentialsProvider="BlaaBlaaBlaa" ZoomLevel="6"
-                     Center="51,21"
+                     Center="{Binding CenterLocation, Converter={StaticResource LocationConverter}}"
                       
                       >
                 <Maps:MapItemsControl ItemsSource="{Binding Customers}">

@@ -16,6 +16,8 @@ namespace MapControlWPF.ViewModels
 
         private readonly ICustomerService customerService;
 
+        public Coordinate CenterLocation { get; set; }
+
         public CustomersMapView()
             :this(new FakeCustomerService())
         {
@@ -26,6 +28,8 @@ namespace MapControlWPF.ViewModels
             this.customerService = customerService;
 
             Customers = new ObservableCollection<Customer>(customerService.Get());
+
+            CenterLocation = new Coordinate(51, 21);
         }
     }
 }
